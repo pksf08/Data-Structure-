@@ -1,0 +1,21 @@
+class Solution {
+    public int trap(int[] height) {
+        int total =0;
+        int leftmax = height[0];
+        Stack<Integer> rightmax = new Stack();
+        // int rightmax = height[height.length-1];
+        rightmax.push(height[height.length-1]);
+        for(int i =height.length-2;i>=2;i--){
+            int maximum = Math.max(rightmax.peek(),height[i]);
+            rightmax.push(maximum);
+        }
+        for(int j =1;j<height.length-1;j++){
+            int mini = Math.min(leftmax,rightmax.peek());
+            int temp = mini - height[j];
+            total +=Math.max(temp,0);
+            rightmax.pop();
+            leftmax = Math.max(leftmax,height[j]);
+        }
+        return total;
+    }
+}
