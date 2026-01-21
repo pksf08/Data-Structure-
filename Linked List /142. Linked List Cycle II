@@ -1,0 +1,25 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast=head;
+        ListNode res = head;
+        boolean bool=false;
+        while(slow!=null && fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                bool = true;
+                break;
+            }
+        }
+        if(bool){
+            while(slow!=res){
+                slow=slow.next;
+                res=res.next;
+            }
+            return res;
+        }
+       
+        return null;
+    }
+}
