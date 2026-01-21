@@ -1,0 +1,17 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int n1 = num1.length()-1;
+        int n2 = num2.length()-1;
+        int carry =0;
+        StringBuffer res = new StringBuffer();
+        while(n1>=0 || n2>=0 || carry>0){
+            if(n1>=0)
+                carry +=num1.charAt(n1--)-'0';
+            if(n2>=0)
+                carry +=num2.charAt(n2--)-'0';
+            res.append(carry%10);
+            carry = carry/10;
+        }
+        return res.reverse().toString();
+    }
+}
