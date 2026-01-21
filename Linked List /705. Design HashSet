@@ -1,0 +1,35 @@
+class MyHashSet {
+    int bucketsize =10;
+    int index;
+    LinkedList<Integer>[] buckets;
+    public MyHashSet() {
+        buckets = new LinkedList[bucketsize];
+    }
+    
+    public void add(int key) {
+        index= key%bucketsize;
+        if(buckets[index] == null)
+            buckets[index]=new LinkedList<>();
+        if(!buckets[index].contains(key))
+            buckets[index].add(key);        
+    }
+    
+    public void remove(int key) {
+        index = key%bucketsize;
+        if(buckets[index]!=null)
+           buckets[index].remove(Integer.valueOf(key));
+    }
+    
+    public boolean contains(int key) {
+        index = key%bucketsize;
+        LinkedList<Integer> list = buckets[index];
+        if(list == null){
+            return false;
+        }
+        for(int val:list){
+            if(val == key)
+                return true;
+        }
+        return false;
+    }
+}
