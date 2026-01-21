@@ -1,0 +1,21 @@
+class Solution {
+    public void flatten(TreeNode root) {
+        List<TreeNode> res = new ArrayList<>();
+        preorder(root,res);
+        for(int i=0;i<res.size()-1;i++){
+            TreeNode cur = res.get(i);
+            cur.left=null;
+            cur.right =res.get(i+1);
+        }  
+        if(!res.isEmpty()){
+            res.get(res.size()-1).left = null;
+            res.get(res.size()-1).right = null;
+        }
+    }   
+    public void preorder(TreeNode temp, List<TreeNode> li){
+        if(temp== null)  return;
+        li.add(temp);
+        preorder(temp.left,li);
+        preorder(temp.right,li);
+    }
+}
