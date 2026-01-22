@@ -1,0 +1,12 @@
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int count[] = {-1,-1,-1};
+        int pluscount =0;
+        for(int c=0;c<s.length();c++){
+            count[s.charAt(c)-'a']=c;
+            if(count[0]!=-1 && count[1]!=-1 && count[2]!=-1)
+                pluscount = pluscount+(1+Math.min(count[0],Math.min(count[1],count[2])));
+        }
+        return pluscount;
+    }
+}
