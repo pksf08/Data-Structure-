@@ -1,0 +1,14 @@
+class Solution {
+    public String reversePrefix(String s, int k) {
+        char[] arr = s.toCharArray();
+        int j=k-1,i=0;
+        while(i<j){ 
+                char c = arr[i];
+                arr[i]=arr[j];
+                arr[j]=c;
+                i++;
+                j--;     
+        }
+        return new String(arr);
+    }
+}
